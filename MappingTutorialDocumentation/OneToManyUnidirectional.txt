@@ -1,0 +1,104 @@
+OneToMany Unidirectional
+
+Q1) one question have many answer
+
+Testing Steps:
+
+Step1)Add Answer
+
+METHOD=POST
+
+URL=http://localhost:8089/AnswerInfo/add
+
+REQUEST=
+ {
+  "answers":"Character"
+ }	
+
+RESPONSE=
+{
+    "aid": 5,
+    "answers": "Character"
+}
+
+
+
+Step2)Get Answer
+
+METHOD=GET
+
+URL=http://localhost:8089/AnswerInfo/answerlist
+
+RESPONSE=
+[
+{
+        "aid": 4,
+        "answers": "Double"
+    },
+    {
+        "aid": 5,
+        "answers": "Character"
+    }
+
+]
+
+
+Step3)Add Question
+
+METHOD=POST
+
+URL=http://localhost:8089/Questioninfo/add
+
+REQUEST=
+{
+  "question": "What are the data types of Java?",
+  "answerlist": [
+    {
+      "aid": 4
+    },
+    {
+      "aid": 5
+    }
+  ]
+}
+
+
+RESPONSE=
+{
+    "qid": 3,
+    "question": "What are the data types of Java?",
+    "answerlist": [
+        {
+            "aid": 4,
+            "answers": "Double"
+        },
+        {
+            "aid": 5,
+            "answers": "Character"
+        }
+    ]
+}
+
+
+
+
+Step4)Get Question
+METHOD=GET
+
+URL=http://localhost:8089/Questioninfo/questionlist
+
+RESPONSE=
+{
+        "qid": 3,
+        "question": "What are the data types of Java?",
+        "answerlist": [
+            {
+                "aid": 4,
+                "answers": "Double"
+            },
+            {
+                "aid": 5,
+                "answers": "Character"
+            }
+        ]
+    }

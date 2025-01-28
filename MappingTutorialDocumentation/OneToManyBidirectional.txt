@@ -1,0 +1,133 @@
+OneToManyBidirectional
+
+Step1)Add Question
+
+METHOD=POST
+
+URL=http://localhost:8090/Questioninfo/add
+
+REQUEST=
+{
+  "question": "Features of Java?",
+  "answerlist": [
+    {
+      "answers": "Java is a programming language."
+    },
+    {
+      "answers": "Java is used for building cross-platform applications."
+    }
+  ]
+}
+
+RESPONSE=
+{
+    "qid": 2,
+    "question": "Features of Java?",
+    "answerlist": [
+        {
+            "aid": 5,
+            "answers": "Java is a programming language."
+        },
+        {
+            "aid": 6,
+            "answers": "Java is used for building cross-platform applications."
+        }
+    ]
+}
+
+
+
+Step2)Get Question
+
+METHOD=GET
+
+URL=http://localhost:8090/Questioninfo/questionlist
+
+RESPONSE=
+{
+        "qid": 2,
+        "question": "Features of Java?",
+        "answerlist": [
+            {
+                "aid": 5,
+                "answers": "Java is a programming language."
+            },
+            {
+                "aid": 6,
+                "answers": "Java is used for building cross-platform applications."
+            }
+        ]
+    }
+
+
+
+
+
+Step3) Add Answer
+
+METHOD=POST
+
+URL=http://localhost:8090/AnswerInfo/add
+
+REQUEST=
+{
+  "answers": "Automatic Garbage Collection",
+  "question": 
+	{
+    "qid": 2
+  }
+}
+
+
+RESPONSE=
+{
+    "aid": 7,
+    "answers": "Automatic Garbage Collection",
+    "question": {
+        "qid": 2,
+        "question": "Features of Java?",
+        "answerList": [
+            {
+                "aid": 5,
+                "answers": "Java is a programming language."
+            },
+            {
+                "aid": 6,
+                "answers": "Java is used for building cross-platform applications."
+            }
+        ]
+    }
+}
+
+
+
+
+Step4)GET Answer
+
+METHOD=GET
+
+URL=http://localhost:8090/AnswerInfo/answerlist
+
+RESPONSE=
+ {
+        "aid": 7,
+        "answers": "Automatic Garbage Collection",
+        "question": {
+            "qid": 2,
+            "question": "Features of Java?",
+            "answerList": [
+                {
+                    "aid": 5,
+                    "answers": "Java is a programming language."
+                },
+                {
+                    "aid": 6,
+                    "answers": "Java is used for building cross-platform applications."
+                },
+                {
+                    "aid": 7,
+                    "answers": "Automatic Garbage Collection"
+                }
+            ]
+        }
+    }

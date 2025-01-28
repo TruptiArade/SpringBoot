@@ -1,0 +1,127 @@
+ManyToMany Unidirectional
+
+Step1)Add Address
+METHOD=POST
+
+URL=http://localhost:8093/Addressinfo/add
+
+REQUEST=
+{
+  "city": "Pune",
+  "landmark": "Hinjewadi Chowk",
+  "state": "Maharashtra",
+  "country": "India"
+}
+
+RESPONSE=
+{
+    "aid": 10,
+    "city": "Pune",
+    "state": "Maharashtra",
+    "country": "India",
+    "landmark": "Hinjewadi Chowk"
+}
+
+
+
+
+Step2)Get Address
+METHOD=GET
+
+URL=http://localhost:8093/Addressinfo/addresslist
+
+RESPONSE=
+ {
+        "aid": 9,
+        "city": "Kolhapur",
+        "state": "Maharashtra",
+        "country": "India",
+        "landmark": "Sambhajinagar"
+    },
+    {
+        "aid": 10,
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "landmark": "Hinjewadi Chowk"
+    }
+
+
+
+
+Step3)Add Student
+
+METHOD=POST
+
+URL=http://localhost:8093/StudentInfo/add
+
+REQUEST=
+{
+  "sname": "Apurva Patil",
+  "prn": 78,
+  "addressList": [
+    {
+      "aid": 5
+    },
+		{
+			"aid":4
+		}
+  ]
+}
+
+
+RESPONSE=
+{
+    "id": 11,
+    "sname": "Apurva Patil",
+    "prn": 78,
+    "addressList": [
+        {
+            "aid": 5,
+            "city": "Pune",
+            "state": "Maharashtra",
+            "country": "India",
+            "landmark": "Hinjewadi"
+        },
+        {
+            "aid": 4,
+            "city": "Pune",
+            "state": "Maharashtra",
+            "country": "India",
+            "landmark": "Hinjewadi"
+        }
+    ]
+}
+
+
+
+
+
+Step4)Get Student
+
+METHOD=GET
+
+URL= http://localhost:8093/StudentInfo/studentlist
+
+RESPONSE=  
+{
+        "id": 11,
+        "sname": "Apurva Patil",
+        "prn": 78,
+        "addressList": [
+            {
+                "aid": 5,
+                "city": "Pune",
+                "state": "Maharashtra",
+                "country": "India",
+                "landmark": "Hinjewadi"
+            },
+            {
+                "aid": 4,
+                "city": "Pune",
+                "state": "Maharashtra",
+                "country": "India",
+                "landmark": "Hinjewadi"
+            }
+        ]
+    }

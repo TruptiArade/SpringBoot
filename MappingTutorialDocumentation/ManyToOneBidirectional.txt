@@ -1,0 +1,113 @@
+ManyToOne Bidirectional
+
+Note= many to one bidirectional not supported , so created one to many bidirectional
+
+Step1)Add Question
+
+METHOD=POST
+
+URL=http://localhost:8092/Questioninfo/add
+
+REQUEST=
+{
+  "question": "Explain Stream API?"
+}
+
+RESPONSE=
+{
+    "qid": 6,
+    "question": "Explain Stream API?",
+    "students": null
+}
+
+
+
+
+
+
+Step2)Get Question
+
+METHOD=GET
+
+URL=http://localhost:8092/Questioninfo/questionlist
+
+RESPONSE=
+{
+        "qid": 5,
+        "question": "Explain Encapsulation",
+        "students": null
+    },
+    {
+        "qid": 6,
+        "question": "Explain Stream API?",
+        "students": null
+    }
+
+}
+
+
+
+
+
+Step3)Add Student
+
+METHOD=POST
+
+URL=http://localhost:8092/StudentInfo/add
+
+REQUEST=
+{
+  "sname": "Sanjana",
+  "prn": 16,
+  "question": 
+  {
+    "qid": 6
+  }
+	
+	
+}
+
+RESPONSE=
+{
+    "id": 7,
+    "sname": "Sanjana",
+    "prn": 16,
+    "question": {
+        "qid": 6,
+        "question": "Explain Stream API?",
+        "studentList": [
+            {
+                "id": 7,
+                "prn": 16,
+                "sname": "Sanjana"
+            }
+        ]
+    }
+}
+
+
+
+
+Step4)Get Student
+
+METHOD=GET
+
+URL=http://localhost:8092/StudentInfo/studentlist
+
+RESPONSE=
+{
+        "id": 7,
+        "sname": "Sanjana",
+        "prn": 16,
+        "question": {
+            "qid": 6,
+            "question": "Explain Stream API?",
+            "studentList": [
+                {
+                    "id": 7,
+                    "prn": 16,
+                    "sname": "Sanjana"
+                }
+            ]
+        }
+    }

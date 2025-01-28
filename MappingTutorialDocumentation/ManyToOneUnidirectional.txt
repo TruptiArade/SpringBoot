@@ -1,0 +1,98 @@
+ManyToOne Unidirectional
+
+Step1)Add Question
+
+METHOD=POST
+
+URL=http://localhost:8091/Questioninfo/add
+
+REQUEST=
+{
+    "question":"What are the  data types of Data Structure?"
+}
+
+RESPONSE=
+{
+    "qid": 5,
+    "question": "What are the  data types of Data Structure?"
+}
+
+
+
+
+Step2)Get Question
+METHOD=GET
+
+URL=http://localhost:8091/Questioninfo/questionlist
+
+RESPOSE=
+
+   {
+        "qid": 4,
+        "question": "What are the types Language?"
+    },
+    {
+        "qid": 5,
+        "question": "What are the  data types of Data Structure?"
+    }
+
+
+
+
+
+Step3)Add Student
+
+METHOD=POST
+
+URL=http://localhost:8091/StudentInfo/add
+
+REQUEST=
+{
+  "sname": "Rajshri",
+  "prn": 10,
+  "question": 
+  {
+    "qid": 5
+  }
+}
+
+RESPONSE=
+{
+    "id": 7,
+    "sname": "Rajshri",
+    "prn": 10,
+    "question": {
+        "qid": 5,
+        "question": "What are the  data types of Data Structure?"
+    }
+}
+
+
+
+
+
+Step4)Get Student
+
+METHOD=GET
+
+URL=http://localhost:8091/StudentInfo/studentlist
+
+RESPONSE=
+ {
+        "id": 6,
+        "sname": "Gitesh",
+        "prn": 12,
+        "question": {
+            "qid": 5,
+            "question": "What are the  data types of Data Structure?"
+        }
+    },
+    {
+        "id": 7,
+        "sname": "Rajshri",
+        "prn": 10,
+        "question": {
+            "qid": 5,
+            "question": "What are the  data types of Data Structure?"
+        }
+    }

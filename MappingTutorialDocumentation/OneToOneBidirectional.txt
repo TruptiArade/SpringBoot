@@ -1,0 +1,96 @@
+OneToOneBidirectional
+
+Testing Step
+Step1)Add Laptop
+
+METHOD=POST
+
+URL=http://localhost:8084/LaptopInfo/add
+
+REQUEST=
+{
+    "lname":"Dell",
+    "lmodel":"i7"
+}
+
+RESPONSE=
+{
+    "lid": 3,
+    "lname": "Dell",
+    "lmodel": "i7",
+    "employee": null
+}
+
+
+
+
+Step2)Get Laptop
+
+METHOD=GET
+
+URL=http://localhost:8084/LaptopInfo/laptopList
+
+RESPONSE= 
+{
+        "lid": 3,
+        "lname": "Dell",
+        "lmodel": "i7",
+        "employee": null
+ }
+
+
+
+
+
+Step3)Add Employee
+
+METHOD=POST
+
+URL=http://localhost:8084/EmployeeInfo/add
+
+REQUEST=
+{
+  "ename": "Devansh Arade",
+  "ecompany": "Perscient",
+  "edesignation": "Software Engineer",
+  "laptop": 
+  {
+    "lid": 3
+  }
+}
+
+RESPONSE=
+{
+    "eid": 5,
+    "ename": "Devansh Arade",
+    "ecompany": "Perscient",
+    "edesignation": "Software Engineer",
+    "laptop": {
+        "lid": 3,
+        "lname": "Dell",
+        "lmodel": "i7"
+    }
+}
+
+
+
+
+
+Step4)Get Employee
+
+METHOD= GET
+
+URL=http://localhost:8084/EmployeeInfo/employeelist
+
+RESPONSE=
+{
+        "eid": 5,
+        "ename": "Devansh Arade",
+        "ecompany": "Perscient",
+        "edesignation": "Software Engineer",
+        "laptop": {
+            "lid": 3,
+            "lname": "Dell",
+            "lmodel": "i7"
+        }
+    }

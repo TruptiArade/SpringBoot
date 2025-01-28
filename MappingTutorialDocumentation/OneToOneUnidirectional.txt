@@ -1,0 +1,106 @@
+Mapping Tutorial
+
+OneToOne Unidirectional
+
+Q1: One Employee have One Laptop.
+
+Create Mapping Steps
+Steps:
+          1)@OneToOne Annotaion required to Employee side.
+          2)Save Employee Implementation part to assign laptop id.
+
+Testing steps:
+
+Step1)Add Laptop
+
+METHOD = POST
+
+URL=http://localhost:8083/LaptopInfo/add
+
+REQUEST=
+{
+    "lname":"Apple",
+    "lmodel":"i5"
+}
+
+RESPONSE=
+
+{
+    "lid": 7,
+    "lname": "Apple",
+    "lmodel": "i5"
+}
+
+Step2)Get Laptop
+
+METHOD = GET
+
+URL=http://localhost:8083/LaptopInfo/laptopList
+
+RESPONSE= {
+        "lid": 5,
+        "lname": "Dell",
+        "lmodel": "i5"
+    },
+    {
+        "lid": 6,
+        "lname": "Apple",
+        "lmodel": "i5"
+    },
+    {
+        "lid": 7,
+        "lname": "Apple",
+        "lmodel": "i5"
+    }
+
+Step3)Add Employee with laptop id
+
+METHOD = POST
+
+URL=http://localhost:8083/EmployeeInfo/add
+
+REQUEST=
+{
+  "ename": "Vinayak Arade",
+  "ecompany": "GTASTerix",
+  "edesignation": "Software Engineer",
+  "laptop": 
+  {
+    "lid": 7
+  }
+}
+
+RESPONSE=
+{
+    "eid": 15,
+    "ename": "Vinayak Arade",
+    "ecompany": "GTASTerix",
+    "edesignation": "Software Engineer",
+    "laptop": {
+        "lid": 7,
+        "lname": "Apple",
+        "lmodel": "i5"
+    }
+}
+
+Step4)Get Employee.
+
+METHOD = GET
+
+URL=http://localhost:8083/EmployeeInfo/employeelist
+
+RESPONSE=
+{
+        "eid": 15,
+        "ename": "Vinayak Arade",
+        "ecompany": "GTASTerix",
+        "edesignation": "Software Engineer",
+        "laptop": {
+            "lid": 7,
+            "lname": "Apple",
+            "lmodel": "i5"
+        }
+    }
+
+Note: One Employee have assign one laptop id.this laptop id not assigned to another employee. Otherwise they provide error.
+

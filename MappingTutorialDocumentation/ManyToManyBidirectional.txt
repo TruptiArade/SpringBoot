@@ -1,0 +1,167 @@
+ManyToManyBidirectional
+
+Note:In manytomany bidrectional @JsonIgnoreProperties required both side @JsonManagedReference & @JsonBackReference
+
+Step1)Add Address
+
+METHOD=POST
+
+URL=http://localhost:8094/Addressinfo/add
+
+REQUEST=
+{
+  "city": "Pune",
+  "landmark": "Warje",
+  "state": "Maharashtra",
+  "country": "India"
+	
+}
+
+RESPONSE=
+{
+    "aid": 3,
+    "city": "Pune",
+    "studentList": null,
+    "state": "Maharashtra",
+    "country": "India",
+    "landmark": "Warje"
+}
+
+
+
+Step2)Get Address
+
+METHOD=GET
+
+URL=http://localhost:8094/Addressinfo/addresslist
+
+RESPONSE=
+ {
+        "aid": 3,
+        "city": "Pune",
+        "studentList": [],
+        "state": "Maharashtra",
+        "country": "India",
+        "landmark": "Warje"
+  }
+
+
+
+
+Step3)Add Student
+
+METHOD=POST
+
+URL=http://localhost:8094/StudentInfo/add
+
+REQUEST=
+{
+  "sname": "Sanjana Patil",
+  "prn": 25,
+  "addressList": [
+    {
+      "aid": 1
+    },
+		{
+			"aid":2
+		},
+		{
+			"aid":3
+		}
+  ]
+}
+
+
+
+RESPONSE=
+{
+    "id": 3,
+    "sname": "Sanjana Patil",
+    "prn": 25,
+    "addressList": [
+        {
+            "aid": 1,
+            "city": "Nagpur",
+            "landmark": "Nagpur road",
+            "state": "Maharashtra",
+            "country": "India"
+        },
+        {
+            "aid": 2,
+            "city": "Pune",
+            "landmark": "Bavdhan",
+            "state": "Maharashtra",
+            "country": "India"
+        },
+        {
+            "aid": 3,
+            "city": "Pune",
+            "landmark": "Warje",
+            "state": "Maharashtra",
+            "country": "India"
+        }
+    ]
+}
+
+
+
+
+Step4)Get Student
+METHOD=GET
+
+URL=http://localhost:8094/StudentInfo/studentlist
+
+RESPONSE=
+  {
+        "id": 3,
+        "sname": "Sanjana Patil",
+        "prn": 25,
+        "addressList": [
+            {
+                "aid": 1,
+                "city": "Nagpur",
+                "landmark": "Nagpur road",
+                "state": "Maharashtra",
+                "country": "India"
+            },
+            {
+                "aid": 2,
+                "city": "Pune",
+                "landmark": "Bavdhan",
+                "state": "Maharashtra",
+                "country": "India"
+            },
+            {
+                "aid": 3,
+                "city": "Pune",
+                "landmark": "Warje",
+                "state": "Maharashtra",
+                "country": "India"
+            }
+        ]
+    }
+
+
+
+
+
+Step5)Get Address
+METHOD=GET
+
+URL=http://localhost:8094/Addressinfo/addresslist
+
+RESPONSE= 
+{
+        "aid": 3,
+        "city": "Pune",
+        "studentList": [
+            {
+                "id": 3,
+                "sname": "Sanjana Patil",
+                "prn": 25
+            }
+        ],
+        "state": "Maharashtra",
+        "country": "India",
+        "landmark": "Warje"
+    }
